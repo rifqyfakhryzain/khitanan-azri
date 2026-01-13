@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Khitanan</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background-image: url("3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.nama-undangan {
+  font-family: 'Great Vibes', cursive;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+<!-- OPENING -->
+<section id="opening" class="min-h-screen flex items-center justify-center px-4">
+  <div class="bg-[#FAFAFA] shadow-2xl rounded-3xl p-6 sm:p-8 w-full max-w-md text-center">
+
+    <h1 class="text-2xl sm:text-3xl font-bold text-[#1B5E20]">
+      Undangan Khitanan
+    </h1>
+
+    <p class="mt-1 text-[#6D4C41] text-sm sm:text-base">Putra Kami</p>
+
+    <h2 class="nama-undangan text-5xl sm:text-6xl md:text-7xl text-[#2E7D32] mt-3 leading-tight">
+      Muhamad Azri Ramadhan
+    </h2>
+
+    <p class="mt-6 text-[#6D4C41] text-sm sm:text-base">Kepada Yth:</p>
+    <p id="namaTamu" class="font-semibold text-base sm:text-lg text-[#1B5E20]"></p>
+
+    <button onclick="bukaUndangan()" 
+      class="mt-6 bg-gradient-to-r from-[#1B5E20] to-[#2E7D32] text-white px-6 py-3 rounded-full shadow-lg hover:scale-105 transition">
+      Buka Undangan
+    </button>
+
+  </div>
+</section>
+
+<!-- ISI -->
+<section id="content" class="hidden px-4 pb-10">
+
+<div class="max-w-xl mx-auto">
+
+<div class="bg-[#FAFAFA] shadow-2xl rounded-3xl p-5 sm:p-6 text-center mt-6 border border-[#8D6E63]">
+
+<p class="text-sm sm:text-lg leading-relaxed text-[#4E342E]">
+Kalayan asih tur rahmat Allah SWT, simkuring ngahaturkeun uleman ka Bapa/Ibu/Sadaya
+kanggo ngahadiran acara khitanan putra simkuring.
+</p>
+
+<h3 class="nama-undangan text-5xl sm:text-6xl md:text-7xl text-[#2E7D32] mt-4 leading-tight">
+Muhamad Azri Ramadhan
+</h3>
+
+<!-- GALERI -->
+<div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div class="aspect-[2/3] rounded-2xl overflow-hidden shadow-xl border border-[#8D6E63]">
+    <img src="1.jpeg" onclick="openImage(this.src)"
+    class="w-full h-full object-cover cursor-pointer hover:scale-105 transition">
+  </div>
+</div>
+
+<div class="mt-6 space-y-2 text-sm sm:text-lg text-[#4E342E]">
+<p>📅 Minggu, 8 Februari 2026</p>
+<p>⏰ 09.00 WIB - Selesai</p>
+<p>📍 Kp. Bojong Sari RT02/RW05, Desa Mekarsari, Kec. Ciparay, Bandung</p>
+</div>
+
+</div>
+
+<!-- COUNTDOWN -->
+<div class="mt-8 bg-[#FFF8E1] border border-[#8D6E63] rounded-2xl p-4 text-center shadow-lg">
+<h4 class="font-semibold text-[#1B5E20]">Menuju Acara</h4>
+<p id="countdown" class="text-lg sm:text-2xl font-bold mt-2 text-[#2E7D32]"></p>
+</div>
+
+<!-- MAP -->
+<div class="mt-8">
+  <iframe
+    class="w-full rounded-2xl shadow-xl border border-[#8D6E63]"
+    height="250"
+    loading="lazy"
+    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3959.8734789215155!2d107.73349827499744!3d-7.024154892977536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMDEnMjcuMCJTIDEwN8KwNDQnMDkuOSJF!5e0!3m2!1sen!2sid!4v1768220551074!5m2!1sen!2sid">
+  </iframe>
+</div>
+
+<!-- FOOTER -->
+<div class="mt-8 bg-[#FFF8E1] border border-[#8D6E63] rounded-2xl p-4 text-center shadow-lg mt-10 text-center">
+<p class="italic text-[#6D4C41] text-sm sm:text-base">Hatur nuhun kana kasumpinganna</p>
+<p class="font-semibold text-[#1B5E20] mt-2">Wassalamu’alaikum Wr. Wb.</p>
+</div>
+
+</div>
+</section>
+
+<!-- MODAL IMAGE -->
+<div id="imageModal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+<img id="modalImg" class="max-h-[90%] max-w-[90%] rounded-2xl shadow-2xl">
+</div>
+
+<!-- MUSIC BUTTON -->
+<button onclick="toggleMusic()" 
+class="fixed bottom-5 right-5 bg-[#1B5E20] text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-xl z-50">
+🎵
+</button>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const nama = params.get("to");
+document.getElementById("namaTamu").innerText = nama ? nama : "Tamu Undangan";
+
+function bukaUndangan(){
+  document.getElementById("opening").classList.add("hidden");
+  document.getElementById("content").classList.remove("hidden");
+  window.scrollTo(0,0);
+  document.getElementById("bgMusic").play();
+}
+
+function toggleMusic(){
+  const music = document.getElementById("bgMusic");
+  if(music.paused) music.play();
+  else music.pause();
+}
+
+function openImage(src){
+  document.getElementById("modalImg").src = src;
+  document.getElementById("imageModal").classList.remove("hidden");
+}
+
+document.getElementById("imageModal").addEventListener("click",()=>{
+  document.getElementById("imageModal").classList.add("hidden");
+});
+
+// COUNTDOWN
+const target = new Date("Feb 8, 2026 09:00:00").getTime();
+
+setInterval(()=>{
+const now = new Date().getTime();
+const diff = target - now;
+
+const d = Math.floor(diff / (1000*60*60*24));
+const h = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+const m = Math.floor((diff % (1000*60*60))/(1000*60));
+const s = Math.floor((diff % (1000*60))/1000);
+
+document.getElementById("countdown").innerText =
+d+" Hari "+h+" Jam "+m+" Menit "+s+" Detik";
+},1000);
+</script>
+
+</body>
+</html>

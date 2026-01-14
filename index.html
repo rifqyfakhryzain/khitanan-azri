@@ -5,22 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Undangan Khitanan</title>
 
-<link rel="preload" as="image" href="3.webp">
+<script src="https://cdn.tailwindcss.com"></script>
 
-<script src="https://cdn.tailwindcss.com" defer></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 body {
   font-family: 'Poppins', sans-serif;
-  background-image: url("3.webp");
+  background-image: url("3.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
-
 
 .nama-undangan {
   font-family: 'Great Vibes', cursive;
@@ -106,7 +104,7 @@ Muhamad Azri Ramadhan
 <div class="mt-6">
 
   <div class="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl border border-[#8D6E63] relative group">
-    <img src="1.webp" loading="lazy" onclick="openImage(this.src)"
+    <img src="1.jpeg" onclick="openImage(this.src)"
     class="w-full h-full object-cover cursor-pointer transition duration-700 group-hover:scale-105">
     
     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition"></div>
@@ -211,17 +209,22 @@ function bukaUndangan(){
   document.getElementById("opening").classList.add("hidden");
   document.getElementById("content").classList.remove("hidden");
   window.scrollTo(0,0);
-
-  const music = document.getElementById("bgMusic");
-  const btn = document.getElementById("musicBtn");
-
-  music.play();
-  btn.innerText = "⏸️";
+  document.getElementById("bgMusic").play();
+  document.getElementById("musicBtn").innerText = "⏸️";
 }
+
 
 function toggleMusic(){
   const music = document.getElementById("bgMusic");
   const btn = document.getElementById("musicBtn");
+  function bukaUndangan(){
+  document.getElementById("opening").classList.add("hidden");
+  document.getElementById("content").classList.remove("hidden");
+  window.scrollTo(0,0);
+  document.getElementById("bgMusic").play();
+  document.getElementById("musicBtn").innerText = "⏸️";
+}
+
 
   if(music.paused){
     music.play();
@@ -231,6 +234,7 @@ function toggleMusic(){
     btn.innerText = "🎵";
   }
 }
+
 
 function openImage(src){
   document.getElementById("modalImg").src = src;
@@ -258,8 +262,8 @@ setInterval(()=>{
   document.getElementById("cd-minute").innerText = m;
   document.getElementById("cd-second").innerText = s;
 },1000);
-</script>
 
+</script>
 
 </body>
 </html>

@@ -23,11 +23,31 @@ body {
 .nama-undangan {
   font-family: 'Great Vibes', cursive;
 }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-image: url("3.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.25);
+  z-index:-1;
+}
+
+
 </style>
 </head>
 
 <body>
 
+<!-- Musik -->
 <audio id="bgMusic" loop>
   <source src="lagu.mp3" type="audio/mpeg">
 </audio>
@@ -36,11 +56,18 @@ body {
 <section id="opening" class="min-h-screen flex items-center justify-center px-4">
   <div class="bg-[#FAFAFA] shadow-2xl rounded-3xl p-6 sm:p-8 w-full max-w-md text-center">
 
-    <h1 class="text-2xl sm:text-3xl font-bold text-[#1B5E20]">
-      Undangan Khitanan
-    </h1>
+<p class="text-sm sm:text-base text-[#6D4C41] italic">
+  Dengan penuh rasa syukur kami mengundang Bapak/Ibu
+</p>
 
-    <p class="mt-1 text-[#6D4C41] text-sm sm:text-base">Putra Kami</p>
+<h1 class="text-2xl sm:text-3xl font-bold text-[#1B5E20] mt-2">
+  Undangan Khitanan
+</h1>
+
+<div class="w-16 h-1 bg-[#2E7D32] mx-auto my-3 rounded-full"></div>
+
+<p class="text-[#6D4C41] text-sm sm:text-base">Putra Kami</p>
+
 
     <h2 class="nama-undangan text-5xl sm:text-6xl md:text-7xl text-[#2E7D32] mt-3 leading-tight">
       Muhamad Azri Ramadhan
@@ -74,12 +101,21 @@ Muhamad Azri Ramadhan
 </h3>
 
 <!-- GALERI -->
-<div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <div class="aspect-[2/3] rounded-2xl overflow-hidden shadow-xl border border-[#8D6E63]">
+<div class="mt-6">
+
+  <div class="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl border border-[#8D6E63] relative group">
     <img src="1.jpeg" onclick="openImage(this.src)"
-    class="w-full h-full object-cover cursor-pointer hover:scale-105 transition">
+    class="w-full h-full object-cover cursor-pointer transition duration-700 group-hover:scale-105">
+    
+    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition"></div>
   </div>
+
+  <p class="mt-3 italic text-sm text-[#6D4C41]">
+    Kenangan manis putra kami
+  </p>
+
 </div>
+
 
 <div class="mt-6 space-y-2 text-sm sm:text-lg text-[#4E342E]">
 <p>📅 Minggu, 8 Februari 2026</p>
@@ -92,7 +128,24 @@ Muhamad Azri Ramadhan
 <!-- COUNTDOWN -->
 <div class="mt-8 bg-[#FFF8E1] border border-[#8D6E63] rounded-2xl p-4 text-center shadow-lg">
 <h4 class="font-semibold text-[#1B5E20]">Menuju Acara</h4>
-<p id="countdown" class="text-lg sm:text-2xl font-bold mt-2 text-[#2E7D32]"></p>
+<div id="countdownBox" class="grid grid-cols-4 gap-3 mt-4 text-center">
+  <div class="bg-white rounded-xl shadow p-2">
+    <p id="cd-day" class="text-xl font-bold text-[#2E7D32]"></p>
+    <span class="text-xs text-[#6D4C41]">Hari</span>
+  </div>
+  <div class="bg-white rounded-xl shadow p-2">
+    <p id="cd-hour" class="text-xl font-bold text-[#2E7D32]"></p>
+    <span class="text-xs text-[#6D4C41]">Jam</span>
+  </div>
+  <div class="bg-white rounded-xl shadow p-2">
+    <p id="cd-minute" class="text-xl font-bold text-[#2E7D32]"></p>
+    <span class="text-xs text-[#6D4C41]">Menit</span>
+  </div>
+  <div class="bg-white rounded-xl shadow p-2">
+    <p id="cd-second" class="text-xl font-bold text-[#2E7D32]"></p>
+    <span class="text-xs text-[#6D4C41]">Detik</span>
+  </div>
+</div>
 </div>
 
 <!-- MAP -->
@@ -103,13 +156,34 @@ Muhamad Azri Ramadhan
     loading="lazy"
     src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3959.8734789215155!2d107.73349827499744!3d-7.024154892977536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMDEnMjcuMCJTIDEwN8KwNDQnMDkuOSJF!5e0!3m2!1sen!2sid!4v1768220551074!5m2!1sen!2sid">
   </iframe>
+
+  <!-- BUTTON GMAPS -->
+  <a href="https://maps.app.goo.gl/iqRahdKJHGimToqF9?g_st=aw"
+     target="_blank"
+     class="block mt-4 bg-gradient-to-r from-[#1B5E20] to-[#2E7D32] text-white text-center py-3 rounded-full shadow-lg hover:scale-105 transition">
+     📍 Buka di Google Maps
+  </a>
 </div>
 
+
 <!-- FOOTER -->
-<div class="mt-8 bg-[#FFF8E1] border border-[#8D6E63] rounded-2xl p-4 text-center shadow-lg mt-10 text-center">
-<p class="italic text-[#6D4C41] text-sm sm:text-base">Hatur nuhun kana kasumpinganna</p>
-<p class="font-semibold text-[#1B5E20] mt-2">Wassalamu’alaikum Wr. Wb.</p>
+<div class="mt-10 bg-[#FFF8E1] border border-[#8D6E63] rounded-2xl p-5 text-center shadow-lg">
+
+<p class="italic text-[#6D4C41] text-sm sm:text-base leading-relaxed">
+Atas kehadiran serta doa restu Bapak/Ibu/Saudara/i, kami ucapkan terima kasih.
+</p>
+
+<p class="mt-3 font-semibold text-[#1B5E20]">
+Wassalamu’alaikum Wr. Wb.
+</p>
+
+<div class="mt-4 text-[#4E342E] text-sm sm:text-base">
+Keluarga Besar<br>
+<span class="font-semibold">Bapak Budi Supardi & Ibu Ina Nurhaeni</span>
 </div>
+
+</div>
+
 
 </div>
 </section>
@@ -120,10 +194,11 @@ Muhamad Azri Ramadhan
 </div>
 
 <!-- MUSIC BUTTON -->
-<button onclick="toggleMusic()" 
-class="fixed bottom-5 right-5 bg-[#1B5E20] text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-xl z-50">
+<button id="musicBtn" onclick="toggleMusic()" 
+class="fixed bottom-5 right-5 bg-[#1B5E20] text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-xl z-50 transition hover:scale-110">
 🎵
 </button>
+
 
 <script>
 const params = new URLSearchParams(window.location.search);
@@ -135,13 +210,31 @@ function bukaUndangan(){
   document.getElementById("content").classList.remove("hidden");
   window.scrollTo(0,0);
   document.getElementById("bgMusic").play();
+  document.getElementById("musicBtn").innerText = "⏸️";
 }
+
 
 function toggleMusic(){
   const music = document.getElementById("bgMusic");
-  if(music.paused) music.play();
-  else music.pause();
+  const btn = document.getElementById("musicBtn");
+  function bukaUndangan(){
+  document.getElementById("opening").classList.add("hidden");
+  document.getElementById("content").classList.remove("hidden");
+  window.scrollTo(0,0);
+  document.getElementById("bgMusic").play();
+  document.getElementById("musicBtn").innerText = "⏸️";
 }
+
+
+  if(music.paused){
+    music.play();
+    btn.innerText = "⏸️";
+  } else {
+    music.pause();
+    btn.innerText = "🎵";
+  }
+}
+
 
 function openImage(src){
   document.getElementById("modalImg").src = src;
@@ -156,17 +249,20 @@ document.getElementById("imageModal").addEventListener("click",()=>{
 const target = new Date("Feb 8, 2026 09:00:00").getTime();
 
 setInterval(()=>{
-const now = new Date().getTime();
-const diff = target - now;
+  const now = new Date().getTime();
+  const diff = target - now;
 
-const d = Math.floor(diff / (1000*60*60*24));
-const h = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
-const m = Math.floor((diff % (1000*60*60))/(1000*60));
-const s = Math.floor((diff % (1000*60))/1000);
+  const d = Math.floor(diff / (1000*60*60*24));
+  const h = Math.floor((diff % (1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((diff % (1000*60*60))/(1000*60));
+  const s = Math.floor((diff % (1000*60))/1000);
 
-document.getElementById("countdown").innerText =
-d+" Hari "+h+" Jam "+m+" Menit "+s+" Detik";
+  document.getElementById("cd-day").innerText = d;
+  document.getElementById("cd-hour").innerText = h;
+  document.getElementById("cd-minute").innerText = m;
+  document.getElementById("cd-second").innerText = s;
 },1000);
+
 </script>
 
 </body>
